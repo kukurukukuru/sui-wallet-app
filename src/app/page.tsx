@@ -98,7 +98,7 @@ export default function Home() {
     } finally {
       setTxLoading(false);
     }
-  }, [amount, coins, digestArr]);
+  }, [amount, coins, digestArr, txLoading]);
 
   useEffect(() => {
     const clearCoinsTimer = () => {
