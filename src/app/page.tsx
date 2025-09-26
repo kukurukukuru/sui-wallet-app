@@ -25,9 +25,11 @@ const DigestArrKey = "digestArr";
 
 export default function Home() {
   const account = useCurrentAccount();
-  const wallet = useCurrentWallet();
-  const autoConnectionStatus = useAutoConnectWallet();
   const accountAddress = account?.address;
+
+  const wallet = useCurrentWallet();
+  const currentWallet = wallet.currentWallet;
+  const autoConnectionStatus = useAutoConnectWallet();
   const { mutate: signAndExecuteTransaction } = useSignAndExecuteTransaction();
 
   const [amount, setAmount] = useState<string>("");
@@ -202,11 +204,11 @@ export default function Home() {
       <div>Auto-connection status: {autoConnectionStatus}</div>
 
       <div style={{ marginBottom: 16 }}>
-        {wallet && (
+        {currentWallet && (
           <>
             <h3>Wallet</h3>
             <ul>
-              <li>Name: {wallet.currentWallet?.name}</li>
+              <li>Name: {currentWallet?.name}</li>
             </ul>
           </>
         )}
