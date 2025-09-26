@@ -6,9 +6,11 @@ const isLocalStorageAvailable = (): boolean => {
   }
 };
 
-export const setToLocalStorage = (key: string, value: any) => {
+export const setToLocalStorage = (key: string, value: unknown) => {
   if (!isLocalStorageAvailable()) {
-    typeof window !== "undefined" && alert("localStorage is not available");
+    if (typeof window !== "undefined") {
+      alert("localStorage is not available");
+    }
     return;
   }
 
@@ -22,7 +24,9 @@ export const setToLocalStorage = (key: string, value: any) => {
 
 export const getFromLocalStorage = <T>(key: string): T | null => {
   if (!isLocalStorageAvailable()) {
-    typeof window !== "undefined" && alert("localStorage is not available");
+    if (typeof window !== "undefined") {
+      alert("localStorage is not available");
+    }
     return null;
   }
 

@@ -56,6 +56,14 @@ export default function Home() {
         alert("Please set NEXT_PUBLIC_PRIVATE_KEY in .env.development");
         return;
       }
+      if (!devTargetAddress) {
+        alert("Please set NEXT_PUBLIC_TARGET_ADDRESS in .env.development");
+        return;
+      }
+      if (txLoading) {
+        alert("Previous transaction is still in progress");
+        return;
+      }
 
       setAmount("");
       setTxLoading(true);
